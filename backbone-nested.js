@@ -24,6 +24,7 @@
             opts = opts || {};
 
             // walk through the child attributes
+            attrPath.unshift();
             _.each(attrPath, function(childAttr) {
                 result = result[childAttr];
                 if (result === undefined) {
