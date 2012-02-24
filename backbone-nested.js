@@ -18,13 +18,12 @@
 
         get: function(attrStrOrPath, opts) {
             var attrPath = Backbone.NestedModel.attrPath(attrStrOrPath),
-                childAttr = attrPath[0],
+                childAttr = attrPath.shift(),
                 result = Backbone.Model.prototype.get.call(this, childAttr);
 
             opts = opts || {};
 
             // walk through the child attributes
-            attrPath.shift();
             _.each(attrPath, function(childAttr) {
                 result = result[childAttr];
                 if (result === undefined) {
